@@ -33,10 +33,14 @@ while True:
 
     elif opcao == '2':
         valor_saque = float(input("Digite o valor do saque: "))
-        registro_extrato('Saque', valor_saque)
-        # -----------------------------------------
-        # Desenvolva a lógica da validação do saque
-        # -----------------------------------------
+        if valor_saque < 0:
+            print('\nNão é possivel sacar um número negativo.')
+        elif valor_saque <= saldo:
+            print(f'\nSaque de R${valor_saque} realizado com sucesso.')
+            saldo -= valor_saque
+            registro_extrato('Saque', valor_saque)
+        else: 
+          print('\nNão é possivel realizar um saque de valor maior que o saldo.')
 
     elif opcao == '3':
         print(f'\nExtrato bancário:')
