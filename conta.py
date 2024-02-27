@@ -6,7 +6,13 @@ locale.setlocale(locale.LC_TIME, 'pt_BR')
 saldo = 0
 extratos = []
 
-
+def registro_extrato (tipo, valor):
+    extratos.append({
+                "tipo": tipo,
+                "valor": valor,
+                "horario": datetime.now().strftime('%H:%M:%S'),
+                "data": datetime.now().strftime('%Y-%m-%d')
+            })
 
 while True:
     print("\n1. Depósito")
@@ -20,24 +26,14 @@ while True:
         valor_deposito = float(input("Digite o valor do depósito: "))
         if valor_deposito > 0:
             saldo += valor_deposito
-            extratos.append({
-                "tipo": "Deposito",
-                "valor": valor_deposito,
-                "horario": datetime.now().strftime('%H:%M:%S'),
-                "data": datetime.now().strftime('%Y-%m-%d')
-            })
+            registro_extrato("Depósito", valor_deposito)
             print(f'Depósito de R${valor_deposito:.2f} realizado com sucesso.')
         else:
             print('O valor do depósito deve ser maior que zero.')
 
     elif opcao == '2':
         valor_saque = float(input("Digite o valor do saque: "))
-        extratos.append({
-                "tipo": "Saque",
-                "valor": valor_saque,
-                "horario": datetime.now().strftime('%H:%M:%S'),
-                "data": datetime.now().strftime('%Y-%m-%d')
-            })
+        registro_extrato('Saque', valor_saque)
         # -----------------------------------------
         # Desenvolva a lógica da validação do saque
         # -----------------------------------------
