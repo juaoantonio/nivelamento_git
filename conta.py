@@ -31,7 +31,7 @@ while True:
             print('O valor do depósito deve ser maior que zero.')
 
     elif opcao == '2':
-        valor_saque = float(input("Digite o valor do saque: "))
+        valor_saque = float(input("Digite o valor do saque: ")) * 0.05
         extratos.append({
                 "tipo": "Saque",
                 "valor": valor_saque,
