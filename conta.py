@@ -35,7 +35,7 @@ while True:
         
         # -----------------------------------------
         # Desenvolva a lógica da validação do saque
-        if valor_saque > valor_deposito:
+        if valor_saque > saldo:
             print("O valor do saque é maior do que o saldo atual.")
         else:
             extratos.append({
