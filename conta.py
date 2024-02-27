@@ -26,7 +26,7 @@ while True:
                 "horario": datetime.now().strftime('%H:%M:%S'),
                 "data": datetime.now().strftime('%Y-%m-%d')
             })
-            print(f'Depósito de R${valor_deposito:.2f} realizado com sucesso.')
+            print(f'\nDepósito de R${valor_deposito:.2f} realizado com sucesso.')
         else:
             print('O valor do depósito deve ser maior que zero.')
 
@@ -38,10 +38,15 @@ while True:
                 "horario": datetime.now().strftime('%H:%M:%S'),
                 "data": datetime.now().strftime('%Y-%m-%d')
             })
-        # -----------------------------------------
-        # Desenvolva a lógica da validação do saque
-        # -----------------------------------------
-
+        
+        if valor_saque < 0:
+            print('\nImposivel sacar um valor negativo')
+        elif valor_saque <= saldo:    
+            saldo -= valor_saque
+            print(f'\nVocê sacou R${valor_saque}, agora você tem R${saldo} na conta.')
+        else:
+            print('\nImpossivel sacar esse valor')  
+    
     elif opcao == '3':
         print(f'\nExtrato bancário:')
         for extrato in extratos:
